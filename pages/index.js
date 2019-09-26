@@ -1,10 +1,8 @@
 import Layout from '../components/MyLayout';
 import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
-
-const Index = props => (
-  <Layout>
-    <h1>Batman TV Shows</h1>
+const Post = ({props}) =>( 
+  <>
     <ul>
       {props.shows.map(show => (
         <li key={show.id}>
@@ -14,6 +12,40 @@ const Index = props => (
         </li>
       ))}
     </ul>
+    <style jsx>{`
+        a {
+          font-family: 'Arial';
+        }
+
+        ul {
+          padding: 0;
+        }
+
+        li {
+          list-style: none;
+          margin: 5px 0;
+        }
+
+        a {
+          text-decoration: none;
+          color: blue;
+        }
+
+        a:hover {
+          opacity: 0.6;
+        }
+      `}</style>
+    </>
+);
+const Index = props => (
+  <Layout>
+    <h1>Batman TV Shows</h1>
+    <Post props={props}/>
+    <style jsx>{`
+        h1{
+          font-family: 'Arial';
+        }
+      `}</style>
   </Layout>
 );
 
