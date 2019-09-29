@@ -1,6 +1,11 @@
 import Layout from '../components/MyLayout';
 import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
+import Markdown from 'react-markdown';
+
+//big takeaway:
+//props live inside react component
+//context object lives inside getInitialProps, have access to url, url params 
 const Post = ({props}) =>( 
   <>
     <ul>
@@ -52,9 +57,7 @@ const Index = props => (
 Index.getInitialProps = async function() {
   const res = await fetch('https://api.tvmaze.com/search/shows?q=batman');
   const data = await res.json();
-
   console.log(`Show data fetched. Count: ${data.length}`);
-
   return {
     shows: data.map(entry => entry.show)
   };
